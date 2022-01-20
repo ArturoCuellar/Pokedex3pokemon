@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex</title>
+</head>
+<body>
+  <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Pokemon</th>
+                <th>Img</th>
+                <th>Habilidad</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+            <td id='data'></td>
+            <td id="img"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png
+                " alt=""></td>
+            <td id ="abilities"></td>
+        </tr>
+        </tbody>
+    </table>
+ 
+  </div>
+
+  <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Pokemon</th>
+                <th>Img</th>
+                <th>Habilidad</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+            <td id='data1'></td>
+            <td id="img1"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png
+                " alt=""></td>
+            <td id ="abilities1"></td>
+        </tr>
+        </tbody>
+    </table>
+ 
+  </div>
+
+  
+  <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Pokemon</th>
+                <th>Img</th>
+                <th>Habilidad</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+            <td id='data2'></td>
+            <td id="img2"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png
+                " alt=""></td>
+            <td id ="abilities2"></td>
+        </tr>
+        </tbody>
+    </table>
+ 
+  </div>
+<script>
+
+let url = 'https://pokeapi.co/api/v2/pokemon/ditto';
+
+
+
+fetch(url)
+    .then(response => response.json())
+    .then(data1 => mostrarData(data1))
+    .catch(error => console.log(error))
+
+    
+    
+const mostrarData = (data) =>{
+    console.log(data)
+    let body =''
+    for(let i=0; i<data.length; i++){
+        body += `<tr><td>${data[i].name}</td><td>${data[i].address.street}</td><td>${data[i].phone}</td><td>${data[i].address.geo.lat}</td></tr>`
+    }
+    document.getElementById('data').innerHTML = data.name;
+    
+    document.getElementById('abilities').innerHTML = data.abilities[0].ability.name;
+}
+
+
+   let url1 = 'https://pokeapi.co/api/v2/pokemon/pikachu';
+
+
+
+    fetch(url1)
+        .then(response => response.json())
+        .then(data1 => mostrarData1(data1))
+        .catch(error => console.log(error))
+
+        
+        
+    const mostrarData1 = (data1) =>{
+        console.log(data1)
+        let body =''
+        for(let i=0; i<data1.length; i++){
+            body += `<tr><td>${data[i].name}</td><td>${data[i].address.street}</td><td>${data[i].phone}</td><td>${data[i].address.geo.lat}</td></tr>`
+        }
+        document.getElementById('data1').innerHTML = data1.name;
+        
+        document.getElementById('abilities1').innerHTML = data1.abilities[0].ability.name;
+    }
+
+    let url2 = 'https://pokeapi.co/api/v2/pokemon/snorlax';
+
+
+
+fetch(url2)
+    .then(response => response.json())
+    .then(data2 => mostrarData2(data2))
+    .catch(error => console.log(error))
+
+    
+    
+const mostrarData2 = (data2) =>{
+    console.log(data2)
+    let body =''
+    for(let i=0; i<data2.length; i++){
+        body += `<tr><td>${data[i].name}</td><td>${data[i].address.street}</td><td>${data[i].phone}</td><td>${data[i].address.geo.lat}</td></tr>`
+    }
+    document.getElementById('data2').innerHTML = data2.name;
+    
+    document.getElementById('abilities2').innerHTML = data2.abilities[0].ability.name;
+}
+
+</script>
+
+</body>
+</html>
